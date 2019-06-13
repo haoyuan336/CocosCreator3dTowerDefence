@@ -39,7 +39,6 @@ cc.Class({
                 this._pathIndex ++;
             }
             if (this._pathIndex === this._pathList.length){
-                console.log("到达终点了");
                 this._pathList = undefined;
                 this.node.emit('receive-to-pool');
             }
