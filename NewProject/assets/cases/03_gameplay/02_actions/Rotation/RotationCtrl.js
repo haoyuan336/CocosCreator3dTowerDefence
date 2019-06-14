@@ -8,16 +8,16 @@ cc.Class({
 
     onToClick: function () {
         var rotationTo = cc.rotateTo(1, 90);
-        this.rotationToNode.runAction(rotationTo);
+        this.angleToNode.runAction(rotationTo);
     },
 
     onReverseToClick: function () {
         var rotationTo = cc.rotateTo(1, 180);
-        this.rotationToNode.runAction(rotationTo);
+        this.angleToNode.runAction(rotationTo);
     },
 
     onToRecoverClick: function () {
-        this.rotationToNode.angle = 0;
+        this.angleToNode.angle = 0;
     },
 
     onByClick: function () {

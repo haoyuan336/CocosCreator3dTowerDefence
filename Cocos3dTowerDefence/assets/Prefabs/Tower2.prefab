@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Tower1",
+    "_name": "Tower2",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -57,7 +57,7 @@
     "_scale": {
       "__type__": "cc.Vec3",
       "x": 1,
-      "y": 1.808,
+      "y": 1,
       "z": 1
     },
     "_quat": {
@@ -75,7 +75,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Box",
+    "_name": "New Capsule",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -112,14 +112,14 @@
     "_position": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 24.336,
+      "y": 49,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 48.161,
-      "y": 48.161,
-      "z": 48.161
+      "x": 50,
+      "y": 50,
+      "z": 50
     },
     "_quat": {
       "__type__": "cc.Quat",
@@ -144,11 +144,11 @@
     "_enabled": true,
     "_materials": [
       {
-        "__uuid__": "9552f6ab-bcc5-40d0-9c4a-35c92b46bfbb"
+        "__uuid__": "7b6b3c6e-2ce7-4e54-bb65-7014ed36b12f"
       }
     ],
     "_mesh": {
-      "__uuid__": "046f172c-1574-488b-bbb8-6415a9adb96d"
+      "__uuid__": "83f5eff8-3385-4f95-9b76-8da0aa1d96cd"
     },
     "_receiveShadows": false,
     "_shadowCastingMode": 0,
@@ -161,14 +161,14 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d4994379-3662-4580-9c2f-419f0ce87417"
+      "__uuid__": "76aea841-24cc-4407-ae4c-bbfa7c9286ee"
     },
-    "fileId": "c8w2P4jzhFwaoms2HJJarH",
+    "fileId": "43qdHM1ytHcJYCRwqGwh0y",
     "sync": false
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Box copy",
+    "_name": "New Box",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -204,15 +204,15 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 24.51,
-      "y": 39.026,
+      "x": 31.792,
+      "y": 67,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 39.649,
-      "y": 13.027,
-      "z": 21.357
+      "x": 48.982,
+      "y": 29.436,
+      "z": 26.938
     },
     "_quat": {
       "__type__": "cc.Quat",
@@ -254,9 +254,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d4994379-3662-4580-9c2f-419f0ce87417"
+      "__uuid__": "76aea841-24cc-4407-ae4c-bbfa7c9286ee"
     },
-    "fileId": "abJ4Pgmo5Oo7JGVjGJFoc0",
+    "fileId": "48vcMXMYdAHZCLx8Bv6UEr",
     "sync": false
   },
   {
@@ -265,9 +265,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "d4994379-3662-4580-9c2f-419f0ce87417"
+      "__uuid__": "76aea841-24cc-4407-ae4c-bbfa7c9286ee"
     },
-    "fileId": "2e2ZWx7CtOELmal4zYQcIN",
+    "fileId": "48fxi3uF5M5rQuhJTnlnJw",
     "sync": false
   }
 ]
