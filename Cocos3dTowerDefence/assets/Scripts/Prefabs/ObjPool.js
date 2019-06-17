@@ -11,6 +11,7 @@ cc.Class({
             this._objPool = objPool;
         });
         this.node.on("receive-to-pool", ()=>{
+            this.node.removeFromParent();
             this.node.active = false;
             this._objPool.put(this.node);
         });

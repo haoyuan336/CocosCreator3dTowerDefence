@@ -12,6 +12,8 @@ cc.Class({
     },
 
     onLoad() {
+        this._enemyList = [];
+        this._enemyIndex = 0;
         global.controller.setGameLayer(this.node);
         this._enemyObjPool = new cc.NodePool();
         for (let i = 0; i < 10; i++) {
@@ -54,6 +56,8 @@ cc.Class({
         node.parent = this.node;
         node.x = baseNode.x;
         node.z = baseNode.z;
+        //将当前的敌人的列表 发给 tower 
+        node.emit("set-enemy-list", this._enemyList);
     },
     start() {
         this._addEnemyTime = 0;
@@ -78,8 +82,21 @@ cc.Class({
         }
         node.parent = this.node;
         node.active = true;
+        this._enemyIndex ++;
         node.emit("set-obj-pool", this._enemyObjPool);
         node.emit('set-path-data', this.roadPath.children);
+        node.emit('set-index',this._enemyIndex);
 
+        node.on('left-end', (enemyIndex)=>{
+            for (let i = 0 ; i < this._enemyList.length ; i ++){
+                let enemy = this._enemyList[i];
+                if (enemy.getComponent('Enemy') && enemy.getComponent("Enemy").getIndex() === enemyIndex){
+                    console.log("将敌人从列表里面移除", this._enemyIndex);
+                    this._enemyList.splice(i, 1);
+                }
+            }
+        });
+
+        this._enemyList.push(node);
     }
 });

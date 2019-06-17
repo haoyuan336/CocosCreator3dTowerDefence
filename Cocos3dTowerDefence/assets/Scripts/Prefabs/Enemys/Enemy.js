@@ -6,6 +6,7 @@ cc.Class({
     },
 
     onLoad() {
+        this._index = 0;
         this.node.on("set-path-data", (pathList) => {
             this._pathList = [];
             for (let i = 0; i < pathList.length; i++) {
@@ -19,6 +20,9 @@ cc.Class({
         this.node.on(cc.Node.EventType.TOUCH_START, ()=>{
             console.log("touch start");
         });
+        this.node.on("set-index", (index)=>{
+            this._index = index;
+        });
     },
 
     start() {
@@ -26,7 +30,9 @@ cc.Class({
         this._pathIndex = 0;
 
     },
-
+    getIndex(){
+        return this._index;
+    },
     update(dt) {
         if (this._pathIndex < this._pathList.length) {
             let currentPos = this._pathList[this._pathIndex];
@@ -40,6 +46,7 @@ cc.Class({
             }
             if (this._pathIndex === this._pathList.length){
                 this._pathList = undefined;
+                this.node.emit("left-end", this._index);
                 this.node.emit('receive-to-pool');
             }
         }
