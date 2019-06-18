@@ -21,5 +21,9 @@ class Controller {
     playerClickBuildTower(customData, baseNode) {
         this._gameLayer.emit('build-tower', customData, baseNode);
     }
+    shootOneBullet(tower, bulletPrefab){
+        this._gameLayer.emit("shoot-one-bullet", tower, bulletPrefab);
+    }
+    
 }
 export default Controller;

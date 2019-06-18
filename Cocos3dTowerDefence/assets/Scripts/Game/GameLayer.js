@@ -24,6 +24,7 @@ cc.Class({
         // return cc.geomUtils.intersect.raycast(this.node, ray);
         this.node.on('player-shoot-ray', this.playerShootRay.bind(this));
         this.node.on("build-tower", this.buildTower.bind(this));
+        this.node.on("shoot-one-bullet", this.shootOneBullet.bind(this));
     },
     playerShootRay(ray, cb) {
         //玩家发射了一条射线
@@ -48,7 +49,13 @@ cc.Class({
             }
         }
     },
-
+    shootOneBullet(tower, bulletPrefab) {
+        let bullet = cc.instantiate(bulletPrefab);
+        bullet.parent = this.node;
+        let startPos = tower.getComponent('Tower').getBulletStartPos();
+        console.log('start pos', startPos);
+        bullet.position = startPos;
+    },
     buildTower(data, baseNode) {
         let index = Number(data[data.length - 1]);
         console.log("index", index, baseNode);
@@ -64,7 +71,7 @@ cc.Class({
     },
 
     update(dt) {
-        if (this._addEnemyTime > 0.2) {
+        if (this._addEnemyTime > 2) {
             this._addEnemyTime = 0;
             this.addOneEnemy();
         } else {
@@ -82,15 +89,15 @@ cc.Class({
         }
         node.parent = this.node;
         node.active = true;
-        this._enemyIndex ++;
+        this._enemyIndex++;
         node.emit("set-obj-pool", this._enemyObjPool);
         node.emit('set-path-data', this.roadPath.children);
-        node.emit('set-index',this._enemyIndex);
+        node.emit('set-index', this._enemyIndex);
 
-        node.on('left-end', (enemyIndex)=>{
-            for (let i = 0 ; i < this._enemyList.length ; i ++){
+        node.on('left-end', (enemyIndex) => {
+            for (let i = 0; i < this._enemyList.length; i++) {
                 let enemy = this._enemyList[i];
-                if (enemy.getComponent('Enemy') && enemy.getComponent("Enemy").getIndex() === enemyIndex){
+                if (enemy.getComponent('Enemy') && enemy.getComponent("Enemy").getIndex() === enemyIndex) {
                     console.log("将敌人从列表里面移除", this._enemyIndex);
                     this._enemyList.splice(i, 1);
                 }
