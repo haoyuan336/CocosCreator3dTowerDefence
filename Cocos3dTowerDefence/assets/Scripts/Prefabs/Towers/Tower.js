@@ -71,6 +71,7 @@ cc.Class({
             //改变四元数的数值，通过旋转的角度
             quat.fromEuler(new cc.Vec3(0, angle * 180 / Math.PI, 0));
             //将调整后的 四元数付给tower，从而旋转成功
+            this._quat = quat;
             this.node.setRotation(quat);
             if (this._shootTime >= this._attackDuraction) {
                 this._shootTime = 0;
@@ -86,10 +87,10 @@ cc.Class({
         if (this._bulletPool.size() > 0) {
             node = this._bulletPool.get();
         } else {
-            node = cc.instantiate(node);
+            node = cc.instantiate(this.bulletPrefab);
         }
         let bullet = node.getComponent('Bullet')
-        if (bullet){
+        if (bullet) {
             bullet.setObjPool(this._bulletPool);
         }
         global.controller.shootOneBullet(this.node, node);
@@ -101,5 +102,15 @@ cc.Class({
         let pos = direction.mul(-dis);
         return this.node.position.add(new cc.Vec3(pos.x, this.bulletStartPos.y + this.node.y, pos.y));
 
+    },
+    getBulletPool(){
+        return this._bulletPool;
+    },
+    getDirector(){
+        //获取方向
+        return this._direction;
+    },
+    getCurrentQuat(){
+        return this._quat;
     }
 });

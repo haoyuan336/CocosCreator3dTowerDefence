@@ -53,9 +53,8 @@ cc.Class({
         // let bullet = cc.instantiate(bulletPrefab);
         bulletNode.parent = this.node;
         let startPos = tower.getComponent('Tower').getBulletStartPos();
-        console.log('start pos', startPos);
         bulletNode.position = startPos;
-    
+        bulletNode.emit("set-tower", tower);
     },
     buildTower(data, baseNode) {
         let index = Number(data[data.length - 1]);
@@ -99,7 +98,6 @@ cc.Class({
             for (let i = 0; i < this._enemyList.length; i++) {
                 let enemy = this._enemyList[i];
                 if (enemy.getComponent('Enemy') && enemy.getComponent("Enemy").getIndex() === enemyIndex) {
-                    console.log("将敌人从列表里面移除", this._enemyIndex);
                     this._enemyList.splice(i, 1);
                 }
             }
