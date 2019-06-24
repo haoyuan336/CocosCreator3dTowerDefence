@@ -14,5 +14,10 @@ cc.Class({
 
     },
 
-    update(dt) { }
+    update(dt) { 
+
+    },
+    setObjPool(pool){
+        this._objPool = pool;
+    }
 });

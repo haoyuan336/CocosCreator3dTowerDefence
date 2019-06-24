@@ -46,7 +46,7 @@ cc.Class({
             }
             if (this._pathIndex === this._pathList.length){
                 this._pathList = undefined;
-                this.node.emit("left-end", this._index);
+                this.node.emit("life-end", this._index);
                 this.node.emit('receive-to-pool');
             }
         }

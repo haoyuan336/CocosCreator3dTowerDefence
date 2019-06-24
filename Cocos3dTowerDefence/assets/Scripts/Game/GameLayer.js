@@ -49,12 +49,13 @@ cc.Class({
             }
         }
     },
-    shootOneBullet(tower, bulletPrefab) {
-        let bullet = cc.instantiate(bulletPrefab);
-        bullet.parent = this.node;
+    shootOneBullet(tower, bulletNode) {
+        // let bullet = cc.instantiate(bulletPrefab);
+        bulletNode.parent = this.node;
         let startPos = tower.getComponent('Tower').getBulletStartPos();
         console.log('start pos', startPos);
-        bullet.position = startPos;
+        bulletNode.position = startPos;
+    
     },
     buildTower(data, baseNode) {
         let index = Number(data[data.length - 1]);
@@ -94,7 +95,7 @@ cc.Class({
         node.emit('set-path-data', this.roadPath.children);
         node.emit('set-index', this._enemyIndex);
 
-        node.on('left-end', (enemyIndex) => {
+        node.on('life-end', (enemyIndex) => {
             for (let i = 0; i < this._enemyList.length; i++) {
                 let enemy = this._enemyList[i];
                 if (enemy.getComponent('Enemy') && enemy.getComponent("Enemy").getIndex() === enemyIndex) {

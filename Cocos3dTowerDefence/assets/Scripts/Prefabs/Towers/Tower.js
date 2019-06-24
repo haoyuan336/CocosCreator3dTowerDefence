@@ -22,6 +22,11 @@ cc.Class({
             this._enemyList = enemyList;
         });
         this.reSetTowerData();
+        this._bulletPool = new cc.NodePool();
+        for (let i = 0; i < 10; i++) {
+            let node = cc.instantiate(this.bulletPrefab);
+            this._bulletPool.put(node);
+        }
     },
     updateLevel() {
         if (this._currentLevel < 4) {
@@ -77,7 +82,17 @@ cc.Class({
     },
     shootOneBullet() {
         //发射一枚子弹
-        global.controller.shootOneBullet(this.node, this.bulletPrefab);
+        let node = undefined;
+        if (this._bulletPool.size() > 0) {
+            node = this._bulletPool.get();
+        } else {
+            node = cc.instantiate(node);
+        }
+        let bullet = node.getComponent('Bullet')
+        if (bullet){
+            bullet.setObjPool(this._bulletPool);
+        }
+        global.controller.shootOneBullet(this.node, node);
     },
     getBulletStartPos() {
         let dis = cc.v2(this.bulletStartPos.x, this.bulletStartPos.z).mag();
